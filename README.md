@@ -1,2 +1,3 @@
-# obd-js
-Outdated-Browser Detector
+# Outdated-Browser Handler
+
+`npm install obh --save`

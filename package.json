@@ -1,0 +1,57 @@
+{
+  "name": "obh",
+  "version": "1.0.0",
+  "description": "Outdated-Browser Handler",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npm run build:prod",
+    "build:dev": "node webpack.js",
+    "build:prod": "cross-env NODE_ENV=production node webpack.js",
+    "clean": "npm cache clear && rimraf -- dist",
+    "test": "karma start"
+  },
+  "dependencies": {
+    "bowser": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.8.6",
+    "awesome-typescript-loader": "^5.0.0",
+    "cross-env": "^5.1.4",
+    "eslint": "^4.19.1",
+    "jasmine": "^3.1.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^1.4.2",
+    "karma-jasmine": "^1.1.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.32",
+    "karma-webpack": "^3.0.0",
+    "rimraf": "^2.6.2",
+    "source-map-loader": "^0.2.3",
+    "tslint": "^5.9.1",
+    "tslint-loader": "^3.6.0",
+    "typescript": "^2.8.3",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.6.0"
+  },
+  "keywords": [
+    "obh",
+    "outdated",
+    "browser",
+    "handler"
+  ],
+  "author": "Shamil' Shaymardanov",
+  "license": "MIT",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aristocr2t/obh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aristocr2t/obh/issues"
+  },
+  "homepage": "https://github.com/Aristocr2t/obh#readme"
+}
