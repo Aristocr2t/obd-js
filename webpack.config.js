@@ -1,6 +1,7 @@
 const { DefinePlugin, LoaderOptionsPlugin } = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { resolve } = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development',
   isProd = nodeEnv === 'production';
@@ -47,6 +48,10 @@ const config = {
       },
       sourceMap: true
     }),
+    new CopyWebpackPlugin([
+      '../README.md',
+      '../LICENSE'
+    ], {}),
     new DefinePlugin({
       'process.env': {
         // eslint-disable-line quote-props

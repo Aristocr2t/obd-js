@@ -3,6 +3,7 @@ import { OutdatedBrowserHandlerConfigInterface, OutdatedBrowserHandlerConfig } f
 
 export class OutdatedBrowserHandler {
   private element: HTMLDivElement;
+  private elementContainer: HTMLDivElement;
   private config: OutdatedBrowserHandlerConfig;
 
   constructor(private parentElement: HTMLElement, config?: OutdatedBrowserHandlerConfigInterface) {
@@ -19,6 +20,7 @@ export class OutdatedBrowserHandler {
         });
       }
       this.element = document.createElement('div');
+      this.element.setAttribute('class', 'obh-wrapper');
       Object.assign(this.element.style, {
         zIndex: 10000,
         position: 'fixed',
@@ -26,7 +28,17 @@ export class OutdatedBrowserHandler {
         backgroundColor: '#fff'
       });
       this.parentElement.appendChild(this.element);
-      this.element.innerHTML = this.config.template;
+      this.elementContainer = document.createElement('div');
+      this.elementContainer.setAttribute('class', 'obh-container');
+      Object.assign(this.elementContainer.style, {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        overflowY: 'scroll',
+        overflowX: 'hidden'
+      });
+      this.element.appendChild(this.elementContainer);
+      this.elementContainer.innerHTML = this.config.template;
     }
   }
 
@@ -41,7 +53,7 @@ export class OutdatedBrowserHandler {
       }
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
-          resolve(xhr.response.body || '');
+          resolve(xhr.responseText || '');
         } else {
           reject(xhr.statusText);
         }
