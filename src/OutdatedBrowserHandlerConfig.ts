@@ -1,5 +1,15 @@
 export interface OutdatedBrowserHandlerConfigInterface {
-  minVersions?: { [key: string]: any };
+  minVersions?: {
+    android?: string,
+    chrome?: string,
+    edge?: string,
+    firefox?: string,
+    ios?: string,
+    msie?: string,
+    opera?: string,
+    safari?: string,
+    [key: string]: any
+  };
   sourceUrl?: string;
   template?: string;
   userAgent?: string;
