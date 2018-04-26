@@ -14,6 +14,8 @@ const config = {
   },
   output: {
     path: resolve('./dist'),
+    library: 'obh',
+    libraryTarget: 'umd',
     filename: '[name].js',
     sourceMapFilename: '[name].map'
   },

@@ -1,0 +1,29 @@
+{
+  "name": "obh",
+  "version": "1.0.0",
+  "description": "Outdated-Browser Handler",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "keywords": [
+    "obh",
+    "outdated",
+    "browser",
+    "handler"
+  ],
+  "author": {
+    "name": "Shamil' Shaymardanov",
+    "email": "shamil.amirovich@gmail.com"
+  },
+  "license": "MIT",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aristocr2t/obh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aristocr2t/obh/issues"
+  },
+  "homepage": "https://github.com/Aristocr2t/obh#readme"
+}
