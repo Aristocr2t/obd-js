@@ -11,15 +11,16 @@ export class OutdatedBrowserHandler {
 
   public async run(): Promise<void> {
     if (bowser.isUnsupportedBrowser(this.config.minVersions, this.config.userAgent) && this.parentElement) {
-      if (this.config.templateUrl) {
+      if (this.config.sourceUrl) {
         this.config.template = await this.createRequest({
-          url: this.config.templateUrl,
+          url: this.config.sourceUrl,
           methid: 'GET',
           headers: { 'Content-Type': 'text/html; charset=utf-8' },
         });
       }
       this.element = document.createElement('div');
       Object.assign(this.element.style, {
+        zIndex: 10000,
         position: 'fixed',
         top: '0', left: '0', bottom: '0', right: '0',
         backgroundColor: '#fff'
