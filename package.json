@@ -2,8 +2,8 @@
   "name": "obh",
   "version": "1.0.0",
   "description": "Outdated-Browser Handler",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "build": "npm run build:prod && npm run copy",
     "build:dev": "rimraf dist && node webpack.js",

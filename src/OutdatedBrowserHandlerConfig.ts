@@ -6,7 +6,17 @@ export interface OutdatedBrowserHandlerConfigInterface {
 }
 
 export class OutdatedBrowserHandlerConfig implements OutdatedBrowserHandlerConfigInterface {
-  public minVersions: { [key: string]: any } = {};
+  public minVersions: {
+    android?: string,
+    chrome?: string,
+    edge?: string,
+    firefox?: string,
+    ios?: string,
+    msie?: string,
+    opera?: string,
+    safari?: string,
+    [key: string]: any
+  } = {};
   public sourceUrl: string;
   public template = ``;
   public userAgent: string;
