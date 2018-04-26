@@ -2,47 +2,42 @@ import * as bowser from 'bowser';
 import { OutdatedBrowserHandlerConfigInterface, OutdatedBrowserHandlerConfig } from "./OutdatedBrowserHandlerConfig";
 
 export class OutdatedBrowserHandler {
-  private element: HTMLDivElement;
-  private elementContainer: HTMLDivElement;
-  private config: OutdatedBrowserHandlerConfig;
-
-  constructor(private parentElement: HTMLElement, config?: OutdatedBrowserHandlerConfigInterface) {
-    this.config = new OutdatedBrowserHandlerConfig(config);
-  }
-
-  public async run(): Promise<void> {
-    if (bowser.isUnsupportedBrowser(this.config.minVersions, this.config.userAgent) && this.parentElement) {
-      if (this.config.sourceUrl) {
-        this.config.template = await this.createRequest({
-          url: this.config.sourceUrl,
+  public static async handle(parentElement: HTMLElement, config?: OutdatedBrowserHandlerConfigInterface): Promise<boolean> {
+    config = new OutdatedBrowserHandlerConfig(config);
+    if (bowser.isUnsupportedBrowser(config.minVersions, config.userAgent) && parentElement) {
+      if (config.sourceUrl) {
+        config.template = await this.createRequest({
+          url: config.sourceUrl,
           methid: 'GET',
           headers: { 'Content-Type': 'text/html; charset=utf-8' },
         });
       }
-      this.element = document.createElement('div');
-      this.element.setAttribute('class', 'obh-wrapper');
-      Object.assign(this.element.style, {
-        zIndex: 10000,
+      const element = document.createElement('div');
+      element.setAttribute('class', 'obh-wrapper');
+      Object.assign(element.style, {
+        zIndex: '10000',
         position: 'fixed',
         top: '0', left: '0', bottom: '0', right: '0',
         backgroundColor: '#fff'
       });
-      this.parentElement.appendChild(this.element);
-      this.elementContainer = document.createElement('div');
-      this.elementContainer.setAttribute('class', 'obh-container');
-      Object.assign(this.elementContainer.style, {
+      parentElement.appendChild(element);
+      const elementContainer = document.createElement('div');
+      elementContainer.setAttribute('class', 'obh-container');
+      Object.assign(elementContainer.style, {
         position: 'relative',
         width: '100%',
         height: '100%',
-        overflowY: 'scroll',
+        overflowY: 'auto',
         overflowX: 'hidden'
       });
-      this.element.appendChild(this.elementContainer);
-      this.elementContainer.innerHTML = this.config.template;
+      element.appendChild(elementContainer);
+      elementContainer.innerHTML = config.template;
+      return false;
     }
+    return true;
   }
 
-  private createRequest(options: any): Promise<string> {
+  private static createRequest(options: any): Promise<string> {
     return new Promise<string>((resolve: any, reject: any) => {
       let xhr = new XMLHttpRequest();
       xhr.open(options.method || 'GET', options.url);

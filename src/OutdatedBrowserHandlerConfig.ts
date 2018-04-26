@@ -1,32 +1,50 @@
+export interface BowserFlags {
+  android?: any;
+  bada?: any;
+  blackberry?: any;
+  blink?: any;
+  chrome?: any;
+  chromeos?: any;
+  chromium?: any;
+  firefox?: any;
+  firefoxos?: any;
+  gecko?: any;
+  ios?: any;
+  kMeleon?: any;
+  linux?: any;
+  mac?: any;
+  msedge?: any;
+  msie?: any;
+  opera?: any;
+  phantom?: any;
+  qupzilla?: any;
+  safari?: any;
+  sailfish?: any;
+  samsungBrowser?: any;
+  seamonkey?: any;
+  silk?: any;
+  sleipnir?: any;
+  tizen?: any;
+  ucbrowser?: any;
+  vivaldi?: any;
+  webkit?: any;
+  webos?: any;
+  windows?: any;
+  windowsphone?: any;
+  mobile?: any;
+  tablet?: any;
+  [key: string]: any
+}
+
 export interface OutdatedBrowserHandlerConfigInterface {
-  minVersions?: {
-    android?: string,
-    chrome?: string,
-    edge?: string,
-    firefox?: string,
-    ios?: string,
-    msie?: string,
-    opera?: string,
-    safari?: string,
-    [key: string]: any
-  };
+  minVersions?: BowserFlags;
   sourceUrl?: string;
   template?: string;
   userAgent?: string;
 }
 
 export class OutdatedBrowserHandlerConfig implements OutdatedBrowserHandlerConfigInterface {
-  public minVersions: {
-    android?: string,
-    chrome?: string,
-    edge?: string,
-    firefox?: string,
-    ios?: string,
-    msie?: string,
-    opera?: string,
-    safari?: string,
-    [key: string]: any
-  } = {};
+  public minVersions: BowserFlags = {};
   public sourceUrl: string;
   public template = ``;
   public userAgent: string;
